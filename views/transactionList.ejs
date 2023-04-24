@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Transaction for <%= user.name %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <h1>
+        Transaction
+    </h1>
+    <p>Here is your transactions!</p>
+    <table class="transactionOptionTable">
+        <tr>
+            <td>
+                <a class="transactionButton" href="/transaction/groupByCategory">
+                    group by category
+                </a>
+            </td>
+            <td>
+                <a class="transactionButton" href="?sortBy=category">
+                    sort by category
+                </a>
+            </td>
+            <td>
+                <a class="transactionButton" href="?sortBy=amount">
+                    sort by amount
+                </a>
+            </td>
+            <td>
+                <a class="transactionButton" href="?sortBy=description">
+                    sort by description
+                </a>
+            </td>
+            <td>
+                <a class="transactionButton" href="?sortBy=date">
+                    sort by date
+                </a>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th>description</th>
+            <th>amount</th>
+            <th>category</th>
+            <th>date</th>
+            <th>delete</th>
+            <th>edit</th>
+        </tr>       
+        <% items.forEach(item=> { %>
+            <tr>
+                <td>
+                    <%= item.description %>
+                </td>
+                <td>
+                    <%= item.amount %>
+                </td>
+                <td>
+                    <%= item.category %>
+                </td>
+                <td>
+                    <%= item.date %>
+                </td>
+                <td>
+                    <a href="/transaction/remove/<%=item._id %>">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </td>
+                <td>
+                    <a href="/transaction/edit/<%=item._id %>">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                </td>
+            </tr>
+            <% })%>
+    </table>
+    <h1>Add a new Transaction</h1>
+    <form method="post" action="transaction">
+        <input type="text" name="description" placeholder="description"><br>
+        <input type="text" name="category" placeholder="category"><br>
+        <input type="text" name="amount" placeholder="amount"><br>
+        <input type="text" name="date" placeholder="mm/dd/yyyy"><br>
+        <input type="submit" value="store">
+    </form>
+
+</body>
+
+</html>

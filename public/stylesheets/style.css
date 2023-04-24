@@ -1,0 +1,79 @@
+/* Define global styles */
+body {
+  padding: 20px 40px;
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+}
+
+a {
+  color: #00B7FF;
+}
+
+/* Styles for login form */
+.login > * {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.login_signup_form {
+  border: 1px solid black;
+  border-radius: 3px;
+  font-size: 16px;
+  padding: 25px;
+  width: 15%;
+  margin: 0 auto;
+}
+
+.login_signup_form > * {
+  width: 50%;
+  margin: 10px 0;
+  height: 40px;
+  text-align: center;
+}
+
+/* Styles for navigation buttons */
+.navButton {
+  background-color: white;
+  border: none;
+  border-radius: 3px;
+  color: black;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 10px;
+}
+
+.navButton:hover {
+  background-color: grey;
+}
+
+/* Styles for transaction table */
+table,
+th,
+td {
+  border: 1px solid;
+  padding: 5px 10px;
+}
+
+table {
+  margin-bottom: 5px;
+  width: 100%;
+}
+
+table.transactionOptionTable {
+  text-align: center;
+  height: 50px;
+}
+
+/* Styles for transaction buttons */
+.transactionButton {
+  text-decoration: none;
+  color: white;
+  background-color: blue;
+  border-radius: 5px;
+  padding: 10px 15px;
+  transition: background-color 0.3s ease;
+}
+
+.transactionButton:hover {
+  background-color: darkblue;
+}

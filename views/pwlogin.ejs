@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+    <div class="login">
+        <h2>Login</h2>
+        <form method="post" action="/login" class="login_signup_form">
+            <label for="username">Username:</label>
+            <br>
+            <input type="text" id="username" name="username" autocomplete="username" required><br>
+            <label for="passphrase">Passphrase:</label>
+            <br>
+            <input type="password" id="passphrase" name="passphrase" autocomplete="current-password" required><br>
+            <br>
+            <input type="submit" value="Login" style="background-color: black; color: white;">
+        </form>
+        <div style="text-align:center;font-size: 20px;">Don't have an account?</div>
+        <div>
+            <a class="navButton" href="/signup">Sign Up</a>
+        </div>
+        <div>
+            <a class="navButton" href="/">Back to Home</a>
+        </div>
+    </div>
+</body>
+
+</html>
