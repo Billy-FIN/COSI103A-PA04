@@ -50,7 +50,7 @@
             <th>date</th>
             <th>delete</th>
             <th>edit</th>
-        </tr>       
+        </tr>
         <% items.forEach(item=> { %>
             <tr>
                 <td>
@@ -63,7 +63,7 @@
                     <%= item.category %>
                 </td>
                 <td>
-                    <%= item.date %>
+                    <%= item.date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' }) %>
                 </td>
                 <td>
                     <a href="/transaction/remove/<%=item._id %>">

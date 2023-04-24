@@ -34,7 +34,7 @@ router.get('/transaction/',
                 await TransactionItem.find({ userId: req.user._id }).sort({ category: 1 })
         } else if(sortBy=="description"){
             items =
-                await TransactionItem.find({ userId: req.user._id }).sort({ description: -1 })
+                await TransactionItem.find({ userId: req.user._id }).sort({ description: 1 })
         } else if(sortBy=="date"){
             items =
                 await TransactionItem.find({ userId: req.user._id }).sort({ date: -1 })
@@ -50,15 +50,13 @@ router.get('/transaction/',
 router.post('/transaction/',
     isLoggedIn,
     async (req, res, next) => {
-        date = new Date(req.body.date.split("/")[2], req.body.date.split("/")[0] - 1, req.body.date.split("/")[1])
-        options = { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' };
-        showdate = date.toLocaleDateString('en-US', options)
+        newDate = new Date(req.body.date.split("/")[2], req.body.date.split("/")[0] - 1, req.body.date.split("/")[1])
         const transaction = new TransactionItem(
             {
                 description: req.body.description,
                 amount: parseInt(req.body.amount),
                 category: req.body.category,
-                date: showdate,
+                date: req.body.date,
                 userId: req.user._id,
                 username: req.user.username
             })
@@ -88,7 +86,8 @@ router.get('/transaction/edit/:itemId',
 router.post('/transaction/updateTransactionItem',
     isLoggedIn,
     async (req, res, next) => {
-        const { itemId, description, amount, category, date } = req.body;
+        const { itemId, description, amount, category} = req.body;
+        const date = new Date(JSON.stringify(req.body.date))
         await TransactionItem.findOneAndUpdate(
             { _id: itemId },
             { $set: { description, amount, category, date } });
